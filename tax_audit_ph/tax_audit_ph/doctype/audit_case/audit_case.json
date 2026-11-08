@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:AUD-{YYYY}-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "taxpayer_alias",
+  "status",
+  "current_stage",
+  "opened_on",
+  "closed_on",
+  "owner_user",
+  "source_system",
+  "rule_version",
+  "professional_review_required"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Case Title",
+   "reqd": 1
+  },
+  {
+   "description": "Use a display name or internal alias. Do not place a TIN in this field.",
+   "fieldname": "taxpayer_alias",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Taxpayer Alias",
+   "reqd": 1
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nWaiting for Taxpayer\nWaiting for Professional\nOn Hold\nClosed",
+   "reqd": 1
+  },
+  {
+   "default": "Intake",
+   "fieldname": "current_stage",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Current Stage",
+   "options": "Intake\nAuthority Review\nDocument Production\nNOD\nPAN\nFLD/FAN\nFDDA\nCollection\nClosed",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "opened_on",
+   "fieldtype": "Date",
+   "label": "Opened On",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.status == 'Closed'",
+   "fieldname": "closed_on",
+   "fieldtype": "Date",
+   "label": "Closed On"
+  },
+  {
+   "default": "__user",
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Case Owner",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "default": "Manual",
+   "fieldname": "source_system",
+   "fieldtype": "Select",
+   "label": "Accounting Source",
+   "options": "Manual\nExcel/CSV\nXero\nJuanTax\nQNE\nQuickBooks\nERPNext\nOther"
+  },
+  {
+   "description": "Effective-dated legal rule package used for this case.",
+   "fieldname": "rule_version",
+   "fieldtype": "Data",
+   "label": "Rule Version",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "professional_review_required",
+   "fieldtype": "Check",
+   "label": "Professional Review Required",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "module": "Tax Audit PH",
+ "name": "Audit Case",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "title",
+ "track_changes": 1
+}
+

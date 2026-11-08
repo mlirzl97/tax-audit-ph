@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "autoname": "format:DDL-{YYYY}-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "audit_case",
+  "tax_notice",
+  "label",
+  "due_at",
+  "verification_status",
+  "basis_reference",
+  "verified_by",
+  "verified_at",
+  "preliminary_warning"
+ ],
+ "fields": [
+  {
+   "fieldname": "audit_case",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Audit Case",
+   "options": "Audit Case",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_notice",
+   "fieldtype": "Link",
+   "label": "Tax Notice",
+   "options": "Tax Notice",
+   "reqd": 1
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Deadline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "due_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Due At"
+  },
+  {
+   "default": "Preliminary",
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Verification Status",
+   "options": "Preliminary\nConfirmed\nEscalated",
+   "reqd": 1
+  },
+  {
+   "description": "Effective-dated BIR issuance or other authority used by the reviewer.",
+   "fieldname": "basis_reference",
+   "fieldtype": "Data",
+   "label": "Basis Reference"
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At",
+   "read_only": 1
+  },
+  {
+   "default": "Preliminary deadline. Confirm the receipt date and obtain professional review before relying on it.",
+   "fieldname": "preliminary_warning",
+   "fieldtype": "Small Text",
+   "label": "Warning",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "module": "Tax Audit PH",
+ "name": "Case Deadline",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "due_at",
+ "sort_order": "ASC",
+ "title_field": "label",
+ "track_changes": 1
+}
+

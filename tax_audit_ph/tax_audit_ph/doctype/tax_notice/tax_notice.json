@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "autoname": "format:NTC-{YYYY}-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "audit_case",
+  "notice_type",
+  "date_issued",
+  "date_received",
+  "notice_file",
+  "extraction_status",
+  "classification_confidence",
+  "review_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "audit_case",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Audit Case",
+   "options": "Audit Case",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notice_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Notice Type",
+   "options": "eLA\nMission Order\nTax Verification Notice\nNotice of Discrepancy\nPreliminary Assessment Notice\nFLD/FAN\nFDDA\nSubpoena Duces Tecum\nCollection Notice\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_issued",
+   "fieldtype": "Date",
+   "label": "Date Issued"
+  },
+  {
+   "description": "Enter the actual receipt date. Deadlines must not be confirmed from OCR alone.",
+   "fieldname": "date_received",
+   "fieldtype": "Date",
+   "label": "Date Received",
+   "reqd": 1
+  },
+  {
+   "description": "The attached File must be private.",
+   "fieldname": "notice_file",
+   "fieldtype": "Attach",
+   "label": "Notice File",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "extraction_status",
+   "fieldtype": "Select",
+   "label": "Extraction Status",
+   "options": "Pending\nExtracted\nCorrected\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "classification_confidence",
+   "fieldtype": "Percent",
+   "label": "Classification Confidence",
+   "read_only": 1
+  },
+  {
+   "default": "Unreviewed",
+   "fieldname": "review_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Review Status",
+   "options": "Unreviewed\nTaxpayer Confirmed\nProfessional Confirmed\nEscalated",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "module": "Tax Audit PH",
+ "name": "Tax Notice",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "date_received",
+ "sort_order": "DESC",
+ "title_field": "notice_type",
+ "track_changes": 1
+}
+
