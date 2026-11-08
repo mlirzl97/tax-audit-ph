@@ -31,6 +31,11 @@ For the first firm pilot, use one dedicated Frappe site. Do not place unrelated
 firms in one site. A shared consumer site requires separate permission and
 security work before public use.
 
+The public hobby prototype is a separate, stateless Next.js app on Vercel. It
+must use fabricated or de-identified cases and must not accept document uploads
+or persist taxpayer data. The Frappe deployment boundary remains unchanged for
+any real case data.
+
 ## Integration boundary
 
 CSV/Excel is the required fallback. Vendor APIs are optional adapters. Imported

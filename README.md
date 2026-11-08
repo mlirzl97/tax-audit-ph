@@ -53,6 +53,18 @@ The pure-Python safety checks can be run without a Frappe site:
 python -m pytest
 ```
 
+### Web prototype
+
+The non-commercial hobby prototype is a separate Next.js app deployed on
+Vercel. It uses fabricated or de-identified cases only and does not persist the
+intake form yet.
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
 ## Telemetry
 
 Self-hosted telemetry is off by default. If an administrator opts in, only
