@@ -11,8 +11,8 @@ packages.
 ## Product surfaces
 
 - **Taxpayer workspace:** a free self-service case workspace for understanding
-  a notice, preserving records, tracking preliminary deadlines, and inviting a
-  professional.
+  a notice, preserving receipt facts, organizing records, and preparing a
+  professional handoff when the case needs human judgment.
 - **Firm workspace:** multi-client case management with assignments, review
   gates, evidence tracking, and client collaboration.
 - **Professional assistance:** optional CPA or lawyer involvement. Software
@@ -21,10 +21,11 @@ packages.
 
 ## Current status
 
-Pre-alpha. The repository currently contains the product boundary, initial
-Frappe domain records, safety rules, and a privacy-safe telemetry contract.
-Deadline computation and notice extraction are intentionally not implemented
-until their rule sources and professional review gates are approved.
+Private alpha. The hosted application provides authenticated, persistent audit
+cases, a guided First Response intake, a requested-records checklist, an
+activity trail, and case metadata export. Deadline computation, notice
+extraction, and document uploads remain disabled until their rule sources,
+professional review gates, and file-security controls are approved.
 
 ## Why Frappe
 
@@ -36,7 +37,7 @@ modules.
 
 See [the ERPNext study](docs/erpnext-study.md),
 [product brief](docs/product-brief.md), and
-[pressure test](docs/pressure-test.md).
+[primary customer profile](docs/ideal-customer-profile.md).
 
 ## Development
 
@@ -53,17 +54,22 @@ The pure-Python safety checks can be run without a Frappe site:
 python -m pytest
 ```
 
-### Web prototype
+### Hosted alpha
 
-The non-commercial hobby prototype is a separate Next.js app deployed on
-Vercel. It uses fabricated or de-identified cases only and does not persist the
-intake form yet.
+The Next.js application is deployed on Vercel and uses a dedicated Supabase
+project for authentication and tenant-isolated case data. Copy the example
+environment variables before running it locally.
 
 ```bash
 cd web
 npm install
+cp .env.example .env.local
 npm run dev
 ```
+
+Apply the files in `supabase/migrations/` in filename order to a dedicated
+Supabase project before signing up. Real tax-notice files must not be uploaded;
+document handling is deliberately absent from this release.
 
 ## Telemetry
 

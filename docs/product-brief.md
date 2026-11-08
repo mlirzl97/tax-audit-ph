@@ -2,12 +2,19 @@
 
 ## User
 
-Primary validation users:
+Primary validation users, in design order:
 
-1. A Philippine micro or small-business owner who has received a BIR notice and
-   does not know what it means or what to preserve.
-2. An accounting-firm encoder, senior, manager, or partner managing multiple
+1. A capable Philippine micro or small-business owner who becomes a distressed
+   procedural novice after receiving a BIR notice and does not know what it
+   means, what to preserve, or whether professional help is necessary.
+2. A non-accountant administrator or bookkeeper coordinating the case for a
+   small domestic corporation.
+3. An accounting-firm encoder, senior, manager, or partner managing multiple
    client audit cases through email, spreadsheets, and shared drives.
+
+The taxpayer is the primary UX user. The accounting firm is the professional
+service partner and eventual economic buyer. Their interfaces share a case
+record but must not share the same information density.
 
 ## Pain
 
@@ -31,16 +38,16 @@ response package and proof of submission.
 
 ## MVP
 
-1. Create a case.
-2. Upload a private notice.
-3. Classify the supported notice type, with correction.
-4. Record the actual receipt date.
-5. Display a preliminary deadline with its rule version and warning.
-6. Let a professional confirm or escalate the deadline.
-7. Generate a requested-records checklist.
-8. Upload and track evidence.
-9. Invite an existing professional.
-10. Export the complete case file.
+1. Run an emergency triage before ordinary intake.
+2. Create a case from three verified facts.
+3. Classify a supported notice type, including “I’m not sure.”
+4. Record the actual receipt date and preserve proof of receipt.
+5. Mark every legal deadline as unconfirmed until a professional verifies it.
+6. Show one safe next action and a preservation checklist.
+7. Track requested records as available, missing, or needs help.
+8. Explain why professional review is recommended when a visible trigger exists.
+9. Export a portable handoff file without submitting anything to BIR.
+10. Invite an existing professional after access and consent controls are tested.
 
 ## Anti-goals
 
