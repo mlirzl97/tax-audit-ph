@@ -20,6 +20,13 @@ export default function IntakeForm() {
   return (
     <div className="intake-grid">
       <form className="intake-form" onSubmit={handleSubmit}>
+        <div className="panel-heading">
+          <span className="panel-icon" aria-hidden="true">01</span>
+          <div>
+            <h3>Notice details</h3>
+            <p>Record only what you can verify.</p>
+          </div>
+        </div>
         <div className="field">
           <label htmlFor="noticeType">Notice type</label>
           <select id="noticeType" name="noticeType" defaultValue="" required>
@@ -52,16 +59,21 @@ export default function IntakeForm() {
           </label>
         </fieldset>
 
-        <button type="submit">Show my safe first action</button>
+        <button type="submit">Show my safe first action <span aria-hidden="true">→</span></button>
         <p className="form-note">Answers stay in this browser tab and disappear on refresh.</p>
       </form>
 
       <div className="result-panel" aria-live="polite">
         {result ? (
           <>
-            <p className="card-kicker">Preliminary guidance</p>
-            <h3>{result.notice.label}</h3>
-            <p>{result.notice.action}</p>
+            <div className="panel-heading result-heading">
+              <span className="panel-icon" aria-hidden="true">02</span>
+              <div>
+                <p className="card-kicker">Preliminary guidance</p>
+                <h3>{result.notice.label}</h3>
+              </div>
+            </div>
+            <p className="result-action">{result.notice.action}</p>
             <dl>
               <div>
                 <dt>Receipt date recorded</dt>
@@ -78,8 +90,9 @@ export default function IntakeForm() {
           </>
         ) : (
           <div className="empty-result">
-            <span aria-hidden="true">01</span>
-            <h3>Your next action will appear here</h3>
+            <span className="panel-icon" aria-hidden="true">02</span>
+            <p className="card-kicker">Next safe action</p>
+            <h3>Guidance will appear here</h3>
             <p>We will not calculate or confirm a legal deadline in this prototype.</p>
           </div>
         )}

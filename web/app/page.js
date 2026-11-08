@@ -15,40 +15,69 @@ export default function Home() {
           <span className="brand-mark" aria-hidden="true">TA</span>
           <span>Tax Audit PH</span>
         </a>
-        <span className="prototype-badge">Open-source prototype</span>
+        <nav aria-label="Primary navigation">
+          <a href="#intake">Start intake</a>
+          <a href="#safety">Safety</a>
+          <a className="source-link" href="https://github.com/mlirzl97/tax-audit-ph">
+            View source
+          </a>
+        </nav>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Received a BIR letter?</p>
-          <h1>Start calmly. Preserve the facts. Know the next safe action.</h1>
+          <p className="announcement"><span>Prototype</span> A calmer first response to a BIR notice</p>
+          <h1>Received a BIR letter? Start with the facts.</h1>
           <p className="lede">
-            This prototype helps a Philippine taxpayer organize a notice before
-            inviting a CPA or lawyer. It does not decide whether a notice is valid
-            or whether tax is due.
+            Organize what arrived, preserve the right records, and see one safe
+            next action before inviting a CPA or lawyer.
           </p>
-          <a className="primary-link" href="#intake">Start a sample intake</a>
+          <div className="hero-actions">
+            <a className="primary-link" href="#intake">Start a sample intake <span aria-hidden="true">→</span></a>
+            <a className="secondary-link" href="#safety">What to do first</a>
+          </div>
+          <div className="trust-row" aria-label="Prototype safeguards">
+            <span>No account needed</span>
+            <span>No uploads</span>
+            <span>No data saved</span>
+          </div>
         </div>
 
-        <aside className="calm-card" aria-labelledby="first-hour-title">
-          <p className="card-kicker">The first hour</p>
-          <h2 id="first-hour-title">Do these before preparing a reply</h2>
-          <ol>
-            {safeguards.map((item) => <li key={item}>{item}</li>)}
-          </ol>
-        </aside>
+        <section className="workspace-window" id="intake" aria-labelledby="intake-title">
+          <div className="window-bar" aria-hidden="true">
+            <div className="window-dots"><span /><span /><span /></div>
+            <span>New audit case · Guided intake</span>
+            <span className="window-status">Local only</span>
+          </div>
+          <div className="workspace-heading">
+            <div>
+              <p className="step-pill">Step 1 of 3</p>
+              <h2 id="intake-title">Tell us what arrived</h2>
+              <p>Use fabricated or de-identified information only.</p>
+            </div>
+            <div className="review-gate">
+              <span aria-hidden="true">✓</span>
+              <p><strong>Professional review gate</strong>Deadlines stay unconfirmed.</p>
+            </div>
+          </div>
+          <IntakeForm />
+        </section>
       </section>
 
-      <section className="intake-section" id="intake" aria-labelledby="intake-title">
+      <section className="safety-section" id="safety" aria-labelledby="first-hour-title">
         <div className="section-heading">
-          <p className="eyebrow">Guided intake</p>
-          <h2 id="intake-title">What did you receive?</h2>
-          <p>
-            Use fabricated or de-identified information only. This hobby prototype
-            does not upload or save your answers.
-          </p>
+          <p className="eyebrow">The first hour</p>
+          <h2 id="first-hour-title">Protect the case before preparing a reply.</h2>
+          <p>Four actions that reduce avoidable risk while you arrange professional help.</p>
         </div>
-        <IntakeForm />
+        <ol className="safeguard-grid">
+          {safeguards.map((item, index) => (
+            <li key={item}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{item}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="boundary" aria-labelledby="boundary-title">
@@ -64,6 +93,10 @@ export default function Home() {
       </section>
 
       <footer>
+        <a className="brand footer-brand" href="#top">
+          <span className="brand-mark" aria-hidden="true">TA</span>
+          <span>Tax Audit PH</span>
+        </a>
         <p>Prototype only · Not tax or legal advice · No taxpayer data is stored</p>
       </footer>
     </main>
