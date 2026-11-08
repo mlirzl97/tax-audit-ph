@@ -1,5 +1,3 @@
-import IntakeForm from "./intake-form";
-
 const safeguards = [
   "Keep the original notice, envelope, and proof of receipt.",
   "Do not alter, recreate, or backdate accounting records.",
@@ -16,51 +14,62 @@ export default function Home() {
           <span>Tax Audit PH</span>
         </a>
         <nav aria-label="Primary navigation">
-          <a href="#intake">Start intake</a>
+          <a href="#workspace">Workspace</a>
           <a href="#safety">Safety</a>
-          <a className="source-link" href="https://github.com/mlirzl97/tax-audit-ph">
-            View source
+          <a className="source-link" href="/login">
+            Sign in
           </a>
         </nav>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="announcement"><span>Prototype</span> A calmer first response to a BIR notice</p>
-          <h1>Received a BIR letter? Start with the facts.</h1>
+          <p className="announcement"><span>Free DIY</span> A working case workspace for BIR notices</p>
+          <h1>Received a BIR letter? Start here.</h1>
           <p className="lede">
-            Organize what arrived, preserve the right records, and see one safe
-            next action before inviting a CPA or lawyer.
+            Calm the panic, preserve what arrived, and organize the case yourself.
+            If the facts become risky or complicated, hand the same file to a professional.
           </p>
           <div className="hero-actions">
-            <a className="primary-link" href="#intake">Start a sample intake <span aria-hidden="true">→</span></a>
+            <a className="primary-link" href="/login">Start a free case <span aria-hidden="true">→</span></a>
             <a className="secondary-link" href="#safety">What to do first</a>
           </div>
-          <div className="trust-row" aria-label="Prototype safeguards">
-            <span>No account needed</span>
-            <span>No uploads</span>
-            <span>No data saved</span>
+          <div className="trust-row" aria-label="Workspace safeguards">
+            <span>Private sign-in</span>
+            <span>Tenant-isolated cases</span>
+            <span>Audited changes</span>
           </div>
         </div>
 
-        <section className="workspace-window" id="intake" aria-labelledby="intake-title">
+        <section className="workspace-window" id="workspace" aria-labelledby="workspace-title">
           <div className="window-bar" aria-hidden="true">
             <div className="window-dots"><span /><span /><span /></div>
-            <span>New audit case · Guided intake</span>
-            <span className="window-status">Local only</span>
+              <span>DIY workspace · My cases</span>
+            <span className="window-status">Private alpha</span>
           </div>
           <div className="workspace-heading">
             <div>
-              <p className="step-pill">Step 1 of 3</p>
-              <h2 id="intake-title">Tell us what arrived</h2>
-              <p>Use fabricated or de-identified information only.</p>
+              <p className="step-pill">Working release</p>
+              <h2 id="workspace-title">Do the safe work first</h2>
+              <p>Record the facts, track requested records, and export the same file when you need help.</p>
             </div>
             <div className="review-gate">
               <span aria-hidden="true">✓</span>
-              <p><strong>Professional review gate</strong>Deadlines stay unconfirmed.</p>
+              <p><strong>No forced handoff</strong>Get help when the facts justify it.</p>
             </div>
           </div>
-          <IntakeForm />
+          <div className="product-preview">
+            <div className="preview-stat">
+              <span>Example open cases</span>
+              <strong>3</strong>
+              <small>Across intake, records, and review</small>
+            </div>
+            <div className="preview-list" aria-label="Example case list">
+              <div><strong>CLIENT-001</strong><span>Notice of Discrepancy</span><em>Records gathering</em></div>
+              <div><strong>CLIENT-002</strong><span>Letter of Authority</span><em>Professional review</em></div>
+              <div><strong>CLIENT-003</strong><span>Preliminary Assessment Notice</span><em>Intake</em></div>
+            </div>
+          </div>
         </section>
       </section>
 
@@ -97,7 +106,7 @@ export default function Home() {
           <span className="brand-mark" aria-hidden="true">TA</span>
           <span>Tax Audit PH</span>
         </a>
-        <p>Prototype only · Not tax or legal advice · No taxpayer data is stored</p>
+        <p>Private alpha · Not tax or legal advice · Document uploads are disabled</p>
       </footer>
     </main>
   );

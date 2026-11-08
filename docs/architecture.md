@@ -27,14 +27,17 @@ Workflow, User, Role, and API facilities. We do not duplicate them.
 
 ## Deployment boundary
 
-For the first firm pilot, use one dedicated Frappe site. Do not place unrelated
-firms in one site. A shared consumer site requires separate permission and
-security work before public use.
+The hosted private alpha uses Next.js on Vercel and one dedicated Supabase
+project. Every hosted table has row-level security, and organization membership
+is the tenant boundary. The browser receives only a publishable key; application
+queries still execute as the signed-in user.
 
-The public hobby prototype is a separate, stateless Next.js app on Vercel. It
-must use fabricated or de-identified cases and must not accept document uploads
-or persist taxpayer data. The Frappe deployment boundary remains unchanged for
-any real case data.
+Frappe remains the reference architecture for a dedicated firm-managed site.
+It is not synchronized with the hosted alpha. A shared consumer launch or a
+second independent firm requires explicit tenant-isolation testing first.
+
+Document uploads remain disabled until private storage, access logging, file
+limits, quarantine, and malware scanning have been implemented and tested.
 
 ## Integration boundary
 
