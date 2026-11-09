@@ -4,15 +4,27 @@ export const noticeTypes = [
   ["nic", "Notice for Informal Conference"],
   ["pan", "Preliminary Assessment Notice (PAN)"],
   ["fan", "Final Assessment Notice / FLD"],
+  ["fdda", "Final Decision on Disputed Assessment (FDDA)"],
+  ["sdt", "Subpoena Duces Tecum (SDT)"],
+  ["mission_order", "Mission Order"],
   ["other", "Other or unknown notice"],
 ];
 
 export const caseStages = [
-  ["intake", "Intake"],
-  ["records", "Records gathering"],
-  ["review", "Professional review"],
-  ["response", "Response preparation"],
-  ["submitted", "Submitted"],
+  ["engagement_setup", "Engagement set-up"],
+  ["received", "Received"],
+  ["validating", "Validating"],
+  ["triage", "Triage"],
+  ["risk_assessment", "Risk and exposure assessment"],
+  ["client_data_request", "Client data request"],
+  ["reconciliation", "Reconciliation"],
+  ["drafting", "Drafting"],
+  ["checking", "Checking"],
+  ["technical_review", "Technical review"],
+  ["client_conforme", "Client conforme"],
+  ["submission", "Submission"],
+  ["bir_follow_up", "BIR follow-up"],
+  ["resolution_or_protest", "Resolution or protest"],
   ["closed", "Closed"],
 ];
 
@@ -49,7 +61,7 @@ export function validateCaseInput(input) {
   const clientReference = String(input.clientReference ?? "").trim();
   const noticeType = String(input.noticeType ?? "");
   const receivedDate = String(input.receivedDate ?? "");
-  const stage = String(input.stage ?? "intake");
+  const stage = String(input.stage ?? "received");
   const birOfficerPresent = String(input.birOfficerPresent ?? "not_sure");
   const enforcementTermsMentioned = String(input.enforcementTermsMentioned ?? "not_sure");
   const responsePeriodMentioned = String(input.responsePeriodMentioned ?? "not_sure");
@@ -110,6 +122,9 @@ export function getProfessionalReviewReasons(caseRecord, checklist = []) {
   }
   if (caseRecord.notice_type === "fan") {
     reasons.push("A final assessment notice or FLD warrants prompt CPA or tax-lawyer review.");
+  }
+  if (["fdda", "sdt", "mission_order"].includes(caseRecord.notice_type)) {
+    reasons.push("This notice is a high-risk escalation trigger and needs immediate Tax Team leadership review.");
   }
   if (caseRecord.notice_type === "other") {
     reasons.push("The letter is not yet classified, so do not rely on an assumed deadline or remedy.");

@@ -5,8 +5,7 @@ import { createCase } from "../actions";
 import FirstResponseForm from "../first-response-form";
 import WorkspaceHeader from "../workspace-header";
 
-export default async function NewCasePage({ searchParams }) {
-  const params = await searchParams;
+export default async function NewCasePage() {
   const { email } = await requireUser();
 
   return (
@@ -16,13 +15,12 @@ export default async function NewCasePage({ searchParams }) {
         <Link className="back-link" href="/cases">← All cases</Link>
         <section className="workspace-title-row compact-title">
           <div>
-            <p className="eyebrow">First Response</p>
-            <h1>You do not have to solve everything right now.</h1>
-            <p>We’ll ask one question at a time and save only what you tell us.</p>
+            <p className="eyebrow">Notice intake</p>
+            <h1>Log the first service facts.</h1>
+            <p>Create the case now. Validation, engagement controls, and deadline confirmation follow inside the workspace.</p>
           </div>
         </section>
-        {params?.error && <p className="form-alert" role="alert">{params.error}</p>}
-        <section className="workspace-card">
+        <section className="intake-sheet">
           <FirstResponseForm action={createCase} />
         </section>
       </div>

@@ -1,112 +1,74 @@
-const safeguards = [
-  "Keep the original notice, envelope, and proof of receipt.",
-  "Do not alter, recreate, or backdate accounting records.",
-  "Record who received the notice and the actual receipt date.",
-  "Ask a Philippine tax professional to confirm any response deadline.",
+import Link from "next/link";
+
+const firstActions = [
+  "Record who physically received the notice, when, and for whom they were acting.",
+  "Secure the notice, envelope, and proof of service in the approved SharePoint location.",
+  "Alert the Tax Team and create a preliminary deadline for independent confirmation.",
 ];
 
 export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Tax Audit PH home">
+        <Link className="brand" href="/" aria-label="Tax Audit PH home">
           <span className="brand-mark" aria-hidden="true">TA</span>
           <span>Tax Audit PH</span>
-        </a>
+        </Link>
         <nav aria-label="Primary navigation">
-          <a href="#workspace">Workspace</a>
-          <a href="#safety">Safety</a>
-          <a className="source-link" href="/login">
-            Sign in
-          </a>
+          <a href="#how-it-works">How it works</a>
+          <Link className="source-link" href="/login">Sign in</Link>
         </nav>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="announcement"><span>Free DIY</span> A working case workspace for BIR notices</p>
-          <h1>Received a BIR letter? Start here.</h1>
+          <p className="eyebrow">Tax audit control for professional teams</p>
+          <h1>Move every BIR notice through one controlled review.</h1>
           <p className="lede">
-            Calm the panic, preserve what arrived, and organize the case yourself.
-            If the facts become risky or complicated, hand the same file to a professional.
+            Control receipt facts, CRF gates, deadlines, approvals, and response evidence
+            without moving client files out of SharePoint.
           </p>
           <div className="hero-actions">
-            <a className="primary-link" href="/login">Start a free case <span aria-hidden="true">→</span></a>
-            <a className="secondary-link" href="#safety">What to do first</a>
-          </div>
-          <div className="trust-row" aria-label="Workspace safeguards">
-            <span>Private sign-in</span>
-            <span>Tenant-isolated cases</span>
-            <span>Audited changes</span>
+            <Link className="primary-link" href="/login">Open the Tax Team workspace</Link>
+            <a className="secondary-link" href="#how-it-works">See the control flow</a>
           </div>
         </div>
 
-        <section className="workspace-window" id="workspace" aria-labelledby="workspace-title">
-          <div className="window-bar" aria-hidden="true">
-            <div className="window-dots"><span /><span /><span /></div>
-              <span>DIY workspace · My cases</span>
-            <span className="window-status">Private alpha</span>
-          </div>
-          <div className="workspace-heading">
-            <div>
-              <p className="step-pill">Working release</p>
-              <h2 id="workspace-title">Do the safe work first</h2>
-              <p>Record the facts, track requested records, and export the same file when you need help.</p>
-            </div>
-            <div className="review-gate">
-              <span aria-hidden="true">✓</span>
-              <p><strong>No forced handoff</strong>Get help when the facts justify it.</p>
-            </div>
-          </div>
-          <div className="product-preview">
-            <div className="preview-stat">
-              <span>Example open cases</span>
-              <strong>3</strong>
-              <small>Across intake, records, and review</small>
-            </div>
-            <div className="preview-list" aria-label="Example case list">
-              <div><strong>CLIENT-001</strong><span>Notice of Discrepancy</span><em>Records gathering</em></div>
-              <div><strong>CLIENT-002</strong><span>Letter of Authority</span><em>Professional review</em></div>
-              <div><strong>CLIENT-003</strong><span>Preliminary Assessment Notice</span><em>Intake</em></div>
-            </div>
-          </div>
-        </section>
+        <aside className="first-aid-sheet" id="first-actions" aria-labelledby="first-actions-title">
+          <p className="sheet-label">At intake</p>
+          <h2 id="first-actions-title">Capture these facts first.</h2>
+          <ol>
+            {firstActions.map((item, index) => (
+              <li key={item}><span>{index + 1}</span><p>{item}</p></li>
+            ))}
+          </ol>
+          <p className="sheet-note">An officer on site triggers immediate escalation. The system records facts and never concludes that service is valid or invalid.</p>
+        </aside>
       </section>
 
-      <section className="safety-section" id="safety" aria-labelledby="first-hour-title">
+      <section className="how-it-works" id="how-it-works" aria-labelledby="how-title">
         <div className="section-heading">
-          <p className="eyebrow">The first hour</p>
-          <h2 id="first-hour-title">Protect the case before preparing a reply.</h2>
-          <p>Four actions that reduce avoidable risk while you arrange professional help.</p>
+          <p className="eyebrow">One case, one defensible history</p>
+          <h2 id="how-title">From receipt to proof of submission.</h2>
         </div>
-        <ol className="safeguard-grid">
-          {safeguards.map((item, index) => (
-            <li key={item}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <p>{item}</p>
-            </li>
-          ))}
+        <ol className="process-list">
+          <li><span>01</span><div><h3>Control the engagement</h3><p>Track the CRF, authority to represent, client conforme, assignment, and segregation of duties.</p></div></li>
+          <li><span>02</span><div><h3>Control every deadline</h3><p>Keep preliminary and confirmed dates separate, version every change, and preserve its source.</p></div></li>
+          <li><span>03</span><div><h3>Build an evidence-linked response</h3><p>Prepare only what the BIR requested, route approvals, and record proof before marking anything submitted.</p></div></li>
         </ol>
       </section>
 
       <section className="boundary" aria-labelledby="boundary-title">
-        <div>
-          <p className="eyebrow">Product boundary</p>
-          <h2 id="boundary-title">A case workspace, not another accounting system.</h2>
-        </div>
-        <p>
-          Tax Audit PH will organize notices, deadlines, evidence, reconciliations,
-          review, and response packages while linking to accounting records held in
-          Xero, JuanTax, QNE, QuickBooks, ERPNext, or spreadsheets.
-        </p>
+        <p className="eyebrow">Deliberate boundaries</p>
+        <h2 id="boundary-title">Files stay in SharePoint. The workspace stores control facts, links, deadlines, approvals, and immutable history. Sending stays manual.</h2>
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#top">
+        <Link className="brand footer-brand" href="/">
           <span className="brand-mark" aria-hidden="true">TA</span>
           <span>Tax Audit PH</span>
-        </a>
-        <p>Private alpha · Not tax or legal advice · Document uploads are disabled</p>
+        </Link>
+        <p>Private pilot · No automatic client or BIR communication · Client files remain in SharePoint</p>
       </footer>
     </main>
   );

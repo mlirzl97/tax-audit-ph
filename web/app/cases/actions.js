@@ -21,28 +21,35 @@ async function firstMembership(supabase) {
   return data.organization_id;
 }
 
-export async function createCase(formData) {
+export async function createCase(_previousState, formData) {
   const { supabase, userId } = await requireUser();
+  const receivedDate = String(formData.get("receivedDate") ?? "");
+  const noticeType = String(formData.get("noticeType") ?? "");
   const { errors, values } = validateCaseInput({
-    clientReference: formData.get("clientReference"),
-    noticeType: formData.get("noticeType"),
-    receivedDate: formData.get("receivedDate"),
+    clientReference: formData.get("clientReference") || `BIR ${noticeType === "other" ? "letter" : noticeType.toUpperCase()} — ${receivedDate}`,
+    noticeType,
+    receivedDate,
     stage: formData.get("stage"),
     birOfficerPresent: formData.get("birOfficerPresent"),
     enforcementTermsMentioned: formData.get("enforcementTermsMentioned"),
     responsePeriodMentioned: formData.get("responsePeriodMentioned"),
     deliveryMethod: formData.get("deliveryMethod"),
   });
-  if (errors.length) redirect(`/cases/new?error=${encodeURIComponent(errors[0])}`);
+  if (errors.length) return { error: errors[0] };
 
   const organizationId = await firstMembership(supabase);
   const { data, error } = await supabase
     .from("audit_cases")
-    .insert({ ...values, organization_id: organizationId, created_by: userId })
+    .insert({
+      ...values,
+      organization_id: organizationId,
+      created_by: userId,
+      receipt_recorded_by: userId,
+    })
     .select("id")
     .single();
 
-  if (error || !data) redirect("/cases/new?error=The+case+could+not+be+created.");
+  if (error || !data) return { error: "The case could not be created." };
   redirect(`/cases/${data.id}`);
 }
 

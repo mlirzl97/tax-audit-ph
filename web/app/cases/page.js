@@ -29,10 +29,10 @@ export default async function CasesPage({ searchParams }) {
         <section className="workspace-title-row">
           <div>
             <p className="eyebrow">{membership?.organizations?.name ?? "Case workspace"}</p>
-            <h1>Audit cases</h1>
-            <p>Track verified facts, records, and professional review status.</p>
+            <h1>Tax audit workspace</h1>
+            <p>Review deadlines, engagement gates, and the next controlled action.</p>
           </div>
-          <Link className="primary-link" href="/cases/new">Create case <span aria-hidden="true">→</span></Link>
+          <Link className="primary-link" href="/cases/new">Log a notice <span aria-hidden="true">→</span></Link>
         </section>
         {params?.error && <p className="form-alert" role="alert">{params.error}</p>}
         {error ? (
@@ -65,9 +65,9 @@ export default async function CasesPage({ searchParams }) {
         ) : (
           <section className="empty-workspace">
             <span className="panel-icon" aria-hidden="true">01</span>
-            <h2>Create your first audit case.</h2>
-            <p>Start with a client reference, notice type, and actual receipt date.</p>
-            <Link className="primary-link" href="/cases/new">Create case</Link>
+            <h2>No cases have been logged.</h2>
+            <p>Start with the notice type, actual receipt date, and on-site officer status.</p>
+            <Link className="primary-link" href="/cases/new">Log first notice</Link>
           </section>
         )}
       </div>

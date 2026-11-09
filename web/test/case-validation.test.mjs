@@ -13,7 +13,7 @@ test("accepts a complete audit case", () => {
     clientReference: "ACME-2026-001",
     noticeType: "nod",
     receivedDate: "2026-11-08",
-    stage: "intake",
+    stage: "received",
   });
 
   assert.deepEqual(result.errors, []);
@@ -44,7 +44,7 @@ test("accepts only supported first-response answers", () => {
     clientReference: "SHOP-001",
     noticeType: "other",
     receivedDate: "2026-11-08",
-    stage: "intake",
+    stage: "received",
     birOfficerPresent: "no",
     enforcementTermsMentioned: "not_sure",
     responsePeriodMentioned: "yes",
@@ -54,7 +54,7 @@ test("accepts only supported first-response answers", () => {
     clientReference: "SHOP-001",
     noticeType: "other",
     receivedDate: "2026-11-08",
-    stage: "intake",
+    stage: "received",
     birOfficerPresent: "sometimes",
     enforcementTermsMentioned: "unknown_value",
     responsePeriodMentioned: "later",

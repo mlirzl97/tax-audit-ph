@@ -21,11 +21,11 @@ export default async function LoginPage({ searchParams }) {
         <span>Tax Audit PH</span>
       </Link>
       <section className="auth-card" aria-labelledby="auth-title">
-        <p className="eyebrow">Private alpha</p>
-        <h1 id="auth-title">Open your case workspace.</h1>
+        <p className="eyebrow">Tax Team workspace</p>
+        <h1 id="auth-title">Sign in to controlled casework.</h1>
         <p className="auth-intro">
-          Sign in to create and manage audit cases. Do not upload tax notices yet;
-          secure document handling is not enabled in this release.
+          Case files remain in SharePoint. This workspace controls metadata,
+          deadlines, approvals, and audit history; it does not send anything to BIR.
         </p>
         {error && <p className="form-alert" role="alert">{error}</p>}
         {checkEmail && (
@@ -35,7 +35,7 @@ export default async function LoginPage({ searchParams }) {
         )}
         <form className="auth-form">
           <div className="field">
-            <label htmlFor="email">Work email</label>
+            <label htmlFor="email">Email</label>
             <input id="email" name="email" type="email" autoComplete="email" required />
           </div>
           <div className="field">
@@ -51,7 +51,7 @@ export default async function LoginPage({ searchParams }) {
             <small>Use at least 12 characters.</small>
           </div>
           <button formAction={signIn}>Sign in</button>
-          <button className="secondary-button" formAction={signUp}>Create account</button>
+          <button className="secondary-button" formAction={signUp}>Create pilot account</button>
         </form>
       </section>
     </main>
